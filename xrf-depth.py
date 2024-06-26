@@ -1,9 +1,11 @@
 # xrf layer thickness calculator by ZH 2024/06/25
 # theoretical, needs empirical testing
 
-
 from xraydb import mu_elam, atomic_density
 from math import log
+
+VERSION_NUM = "v1.0.1"
+VERSION_DATE = "2024/06/26"
 
 
 def get_fluorescence_depth_mm(matrix_element:str, fluorescence_energy_ev:int|float, detectable_photon_fraction:float=0.01) -> float:
@@ -14,10 +16,9 @@ def get_fluorescence_depth_mm(matrix_element:str, fluorescence_energy_ev:int|flo
 	fluorescence photons to input photons in order to be picked up by the detector. 
 	A typical good value for this is 0.01 (1%)"""
 
-	matrix_element_density = atomic_density(matrix_element)
-	mass_attenuation_coeff_at_energy = mu_elam(matrix_element, fluorescence_energy_ev)
-	depth_in_cm = log(detectable_photon_fraction) / ((-1 * mass_attenuation_coeff_at_energy) * matrix_element_density)
-	depth_in_mm = depth_in_cm * 10
+	matrix_element_density:float = atomic_density(matrix_element)
+	mass_attenuation_coeff_at_energy:float = mu_elam(matrix_element, fluorescence_energy_ev)
+	depth_in_mm:float = (log(detectable_photon_fraction) / ((-1 * mass_attenuation_coeff_at_energy) * matrix_element_density)) * 10
 	
 	return depth_in_mm
 
