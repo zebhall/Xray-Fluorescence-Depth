@@ -24,7 +24,7 @@ def get_fluorescence_depth_mm(matrix_element:str, fluorescence_energy_ev:int|flo
 
 
 def main() -> None:
-	matrix_element = input("Matrix Element (symbol): ")
+	matrix_element:str = input("Matrix Element (symbol): ")
 	line_energy_kev = float(input("Fluorescence Line energy of interest (keV): "))
 	percentage_of_counts = float(input("Proportion of returning fluorescence counts required for detectability (0 < x <= 1 , suggested: 0.01): "))
 	fluorescence_depth_mm = get_fluorescence_depth_mm(matrix_element, (line_energy_kev*1000), detectable_photon_fraction=percentage_of_counts)
