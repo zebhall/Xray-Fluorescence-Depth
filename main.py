@@ -30,8 +30,9 @@ def get_available_line_energies(
     Each tuple has two items: line name as str e.g. `"Ka1"`, and energy in keV as float e.g. `1.73998`"
 
     Args:
-    - atomic_df (pd.DataFrame): The input pandas dataframe for atomic data (imported from Atomic.csv by calling `get_atomic_data_from_csv`)\n
-    - z (int) : The atomic number you want lines for
+	atomic_df (pd.DataFrame): The input pandas dataframe for atomic data (imported from Atomic.csv by calling `get_atomic_data_from_csv`)\n
+	z (int) : The atomic number you want lines for
+    
     Returns:
     list of tuples: eg. `[("Ka1", 1.73998), ("Ka2", 1.73938) ... ]`
     """
